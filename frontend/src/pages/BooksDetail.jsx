@@ -48,16 +48,13 @@ export default function BookDetails() {
   };
 
   return (
-    <Box>
+    <Box bgColor="#E1E1E0" padding={8} borderRadius="xl" shadow="xl">
       {isLoading ? (
         <Skeleton height="300px" my="6" />
       ) : (
         <Flex my="6">
           <Box w="300px">
-            <Image
-              src={`http://localhost:8000/${book.image}`}
-              alt={book.title}
-            />
+            <Image src={`http://localhost:8000/${book.image}`} alt={book.title} />
           </Box>
           <Box ml="8">
             <Heading as="h1" size="lg">
@@ -75,7 +72,7 @@ export default function BookDetails() {
           </Box>
         </Flex>
       )}
-      {localStorage.getItem('token') && (
+      {localStorage.getItem("token") && (
         <HStack>
           <Popover>
             <PopoverTrigger>

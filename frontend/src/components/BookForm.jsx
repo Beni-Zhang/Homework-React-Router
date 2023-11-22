@@ -84,18 +84,18 @@ export default function BookForm({ bookData }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <VStack spacing={4}>
+      <VStack spacing={4} borderRadius="xl" bgColor="#F5F5F5" padding="1.5rem" shadow="md">
         <FormControl>
           <FormLabel>Title</FormLabel>
-          <Input name="title" required defaultValue={bookData?.title} />
+          <Input name="title" required defaultValue={bookData?.title} borderColor="#333" borderWidth={2} borderRadius="lg"/>
         </FormControl>
         <FormControl>
           <FormLabel>Author</FormLabel>
-          <Input name="author" required defaultValue={bookData?.author} />
+          <Input name="author" required defaultValue={bookData?.author} borderColor="#333" borderWidth={2} borderRadius="lg"/>
         </FormControl>
         <FormControl>
           <FormLabel>Publisher</FormLabel>
-          <Input name="publisher" required defaultValue={bookData?.publisher} />
+          <Input name="publisher" required defaultValue={bookData?.publisher} borderColor="#333" borderWidth={2} borderRadius="lg"/>
         </FormControl>
         <FormControl>
           <FormLabel>Year</FormLabel>
@@ -104,7 +104,7 @@ export default function BookForm({ bookData }) {
             type="number"
             required
             defaultValue={bookData?.year}
-          />
+            borderColor="#333" borderWidth={2} borderRadius="lg"/>
         </FormControl>
         <FormControl>
           <FormLabel>Pages</FormLabel>
@@ -113,10 +113,10 @@ export default function BookForm({ bookData }) {
             type="number"
             required
             defaultValue={bookData?.pages}
-          />
+            borderColor="#333" borderWidth={2} borderRadius="lg"/>
         </FormControl>
         {selectedImage && (
-          <Image w={64} src={selectedImage} alt="Selected Image" />
+          <Image w={64} src={selectedImage} alt="Selected Image" borderRadius="lg" />
         )}
         {!bookData?.image && (
           <FormControl>
@@ -129,11 +129,11 @@ export default function BookForm({ bookData }) {
                 const file = e.target.files[0];
                 setSelectedImage(URL.createObjectURL(file));
               }}
-            />
+              borderColor="#333" borderWidth={2} borderRadius="lg" pt="3px"/>
           </FormControl>
         )}
 
-        <Button type="submit">{bookData ? "Edit Book" : "Create Book"}</Button>
+        <Button type="submit" colorScheme="teal">{bookData ? "Edit Book" : "Create Book"}</Button>
       </VStack>
     </form>
   );

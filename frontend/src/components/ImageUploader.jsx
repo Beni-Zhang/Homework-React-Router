@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function ImageUploader() {
+export default function ImageUploader({ bookData }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
 
@@ -14,19 +14,24 @@ export default function ImageUploader() {
 
   function handleImageUpload(event) {
     const file = event.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
+    if (file) {
+      setSelectedImage(URL.createObjectURL(file));
+    }
   }
 
   return (
     <div>
-      <input
-        type="file"
-        accept="image/*"
-        required
-        ref={fileInputRef}
-        onChange={handleImageUpload}
-      />
-      {selectedImage && <img src={selectedImage} alt="Selected Image" />}
+      <label>
+        Upload Image
+        <input
+          type="file"
+          accept="image/*"
+          ref={fileInputRef}
+          onChange={handleImageUpload}
+          style={{ display: 'none' }}
+        />
+      </label>
+      {selectedImage && <img src={selectedImage} alt="Selected Image" style={{ marginTop: '10px', maxWidth: '100%' }} />}
     </div>
   );
 }
